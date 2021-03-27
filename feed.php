@@ -15,7 +15,7 @@
 	$html = curl_exec($ch);
 	curl_close($ch);
 
-	
+
 	# Create a DOM parser object
 	$dom = new DOMDocument();
 
@@ -23,16 +23,17 @@
 	# The @ before the method call suppresses any warnings that
 	# loadHTML might throw because of invalid HTML in the page.
 	@$dom->loadHTML($html);
-	
+
 	#Init the rssfeed variable
-    $rssfeed = '<?xml version="1.0" encoding="UTF-8"?>';
-    $rssfeed .= '<rss version="2.0">';
-    $rssfeed .= '<channel>';
-    $rssfeed .= '<title>Università La Sapienza</title>';
-    $rssfeed .= '<link>https://www.gasparini.cloud/sapienza-feed</link>';
-    $rssfeed .= '<description>Bacheca Avvisi - Corso di Laurea in Informatica</description>';
-    $rssfeed .= '<language>it-IT</language>';
-    $rssfeed .= '<copyright>Copyright (C) 2018 gasparini.cloud</copyright>';
+	$rssfeed = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+	$rssfeed .= '<rss version="2.0">' . "\n";
+	$rssfeed .= '<channel>' . "\n";
+	$rssfeed .= "\t" . '<title>Università La Sapienza</title>' . "\n";
+	$rssfeed .= "\t" . '<link>https://www.gasparini.cloud/sapienza-feed</link>' . "\n";
+	$rssfeed .= "\t" . '<description>Bacheca Avvisi - Corso di Laurea in Informatica</description>' . "\n";
+	$rssfeed .= "\t" . '<language>it-IT</language>' . "\n";
+	$rssfeed .= "\t" . '<copyright>Copyright (C) 2018 gasparini.cloud</copyright>' . "\n";
+	$rssfeed .= "\t" . '<lastBuildDate>' . date("D, d M Y H:i:s O") . '</lastBuildDate>' . "\n";
 
 	#Init the temp array
 	$array = array();
@@ -70,17 +71,18 @@
 			}
 		}
 
-        $rssfeed .= '<item>';
-        $rssfeed .= '<title>' . $description. '</title>';
-        $rssfeed .= '<description>' . $description. '</description>';
-        $rssfeed .= '<link>' . $url . $hyperlink. '</link>';
+		$rssfeed .= "\n";
+		$rssfeed .= "\t" . '<item>' . "\n";
+		$rssfeed .= "\t" . '<title>' . $description. '</title>' . "\n";
+		$rssfeed .= "\t" . '<description>' . $description. '</description>' . "\n";
+		$rssfeed .= "\t" . '<link>' . $url . $hyperlink. '</link>' . "\n";
 		#$DATA = str_replace('/', '-', $DATA);
-        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($data_description)). '</pubDate>';
-        $rssfeed .= '</item>';
-    }
-	
-    $rssfeed .= '</channel>';
-    $rssfeed .= '</rss>';
-	
-    echo $rssfeed;
+		$rssfeed .= "\t" . '<pubDate>' . date("D, d M Y H:i:s O", strtotime($data_description)). '</pubDate>' . "\n";
+		$rssfeed .= "\t" . '</item>' . "\n";
+	}
+
+	$rssfeed .= '</channel>' . "\n";
+	$rssfeed .= '</rss>' . "\n";
+
+	echo $rssfeed;
 ?>
