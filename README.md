@@ -1,5 +1,5 @@
 # Sapienza Informatica Feed RSS
-Feed RSS per le notizie ufficiali dal [sito del Dipartimento di Informatica][1].
+Scraper per generare un feed RSS degli avvisi pubblicati sul [sito del Dipartimento di Informatica][1].
 
 Il feed è disponibile online a [questo indirizzo][2].
 Gli aggiornamenti vengono automaticamente inoltrati sul canale telegram [@sapienzafeed][3] tramite [IFTTT][4].
